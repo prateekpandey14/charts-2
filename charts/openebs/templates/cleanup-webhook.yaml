@@ -26,3 +26,8 @@ spec:
           - >
               kubectl delete validatingWebhookConfiguration openebs-validation-webhook-cfg;
       restartPolicy: OnFailure
+{{- if .Values.apiserver.tolerations }}
+      tolerations:
+{{ toYaml .Values.apiserver.tolerations | indent 8 }}
+{{- end }}
+{{- end }}
